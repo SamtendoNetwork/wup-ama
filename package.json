@@ -1,0 +1,24 @@
+{
+  "name": "wup-ama",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "run": "node ./src/server.js"
+  },
+  "keywords": [
+    "smm",
+    "super",
+    "mario",
+    "maker"
+  ],
+  "author": "Whatsauser",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express-rate-limit": "^8.7.4",
+    "postgres": "^4.1.1",
+    "xmlbuilder": "^15.1.1"
+  }
+}
