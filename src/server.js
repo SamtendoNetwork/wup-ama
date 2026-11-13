@@ -77,21 +77,20 @@ app.get('/api/v1/pickup/:difficulty', pickupLimiter, async (request, response) =
     // create base JSON object.
     // SMM expects an XML response, but working in XML is a pain.
     // So instead we work in JSON and convert to XML later
-    let json = {
-        root: {
-            courses: []
-        }
-    }
-
-    let courses;
-    courses = await getCourses(400);
-    for (let course of courses) {
-        json.root.courses.push({
-            course: {
-                id: course.data_id
-            }
-        });
-    }
+	let json = {
+	    root: {
+	        courses: {
+	            course: []
+	        }
+	    }
+	};
+	
+	const courses = await getCourses(400);
+	for (const course of courses) {
+	    json.root.courses.course.push({
+	        id: course.data_id
+	    });
+	}
 	const response_to_send = xmlbuilder.create(json).end({ pretty: true });
 	console.log('Response: ', response_to_send)
     response.send(response_to_send);
