@@ -110,7 +110,7 @@ app.get('/api/v1/pickup/:difficulty', pickupLimiter, async (request, response) =
         });
     }
 	const response_to_send = xmlbuilder.create(json).end({ pretty: true });
-	console.log('Response:' response_to_send)
+	console.log('Response: ', response_to_send)
     response.send(response_to_send);
 });
 
