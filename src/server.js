@@ -69,27 +69,10 @@ app.get('/api/v1/pickup/:difficulty', pickupLimiter, async (request, response) =
         difficulty = request.params.difficulty,
         difficulty_index;
 	console.log('Request for pickup')
-    if (!valid.includes(difficulty)) {
-        return response.sendStatus(404); // if the requested difficulty isn't valid, send a 404
-    }
 
     response.set('Content-Type', 'application/xml');
 
     // Do we still need this? I'm not sure if our super mario maker server tracks difficulty as of right now
-    switch (difficulty) {
-        case 'easy':
-            difficulty_index = 0;
-            break;
-        case 'normal':
-            difficulty_index = 1;
-            break;
-        case 'expert':
-            difficulty_index = 2;
-            break;
-        case 'super_expert':
-            difficulty_index = 3;
-            break;
-    }
 
     // create base JSON object.
     // SMM expects an XML response, but working in XML is a pain.
