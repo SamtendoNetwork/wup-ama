@@ -68,7 +68,7 @@ app.get('/api/v1/pickup/:difficulty', pickupLimiter, async (request, response) =
     let valid = ['easy', 'normal', 'expert', 'super_expert'], // valid difficulty types
         difficulty = request.params.difficulty,
         difficulty_index;
-
+	console.log('Request for pickup')
     if (!valid.includes(difficulty)) {
         return response.sendStatus(404); // if the requested difficulty isn't valid, send a 404
     }
@@ -109,8 +109,9 @@ app.get('/api/v1/pickup/:difficulty', pickupLimiter, async (request, response) =
             }
         });
     }
-
-    response.send(xmlbuilder.create(json).end({ pretty: true }));
+	const response_to_send = xmlbuilder.create(json).end({ pretty: true });
+	console.log('Response:' response_to_send)
+    response.send(response_to_send);
 });
 
 const port = process?.env?.SN_SMM_DOTHUB_PORT || 8080;
